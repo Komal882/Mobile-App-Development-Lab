@@ -56,3 +56,9 @@ Handles the login screen, validates the username and password, and starts `HomeA
 val intent = Intent(this, HomeActivity::class.java)
 intent.putExtra("username", userName)
 startActivity(intent)
+## Demo Video
+
+[![Watch Experiment 04 Demo](https://img.shields.io/badge/▶️_Watch_Demo-Video-blue)](./Experiment-04-Demo.mp4)
+
+**Experiment 04 Demo:**  
+[▶️ Click here to watch the recorded video](./Experiment-04-Demo.mp4)
