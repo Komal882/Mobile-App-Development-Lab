@@ -8,19 +8,19 @@ To develop an Android application that demonstrates how to create and display no
 
 This experiment demonstrates the implementation of notifications in an Android application.
 
-The application creates a notification channel and displays a notification to the user when the notification action is triggered. It demonstrates the basic concepts of Android notifications, notification channels, notification titles, notification messages, and notification icons.
+The application creates a notification channel and displays a notification when the notification action is triggered. It demonstrates notification channels, notification titles, notification messages, notification icons, and notification permissions.
 
 The application is developed using **Kotlin** in **Android Studio**.
 
 ## Features
 
-- Simple and user-friendly Android interface
-- Creation of a Notification Channel
-- Display of notifications using `NotificationManager`
+- Simple and user-friendly interface
+- Notification Channel creation
 - Notification title and message
 - Notification icon
-- Android notification panel integration
-- Basic notification handling
+- Notification panel integration
+- Notification permission handling
+- Android notification management
 
 ## Technologies Used
 
@@ -55,19 +55,21 @@ Notification Appears in Notification Panel
 
 ### MainActivity
 
-`MainActivity` handles the main application screen and the notification functionality.
+`MainActivity` handles the main application interface and notification functionality.
+
+It creates the notification channel and triggers the notification when the user performs the notification action.
 
 ### NotificationChannel
 
-`NotificationChannel` is used to create and manage a notification channel for Android devices running Android 8.0 (API level 26) and above.
+`NotificationChannel` is used to create and manage a notification channel for Android 8.0 (API level 26) and above.
 
 ### NotificationManager
 
-`NotificationManager` is responsible for issuing and displaying the notification on the Android device.
+`NotificationManager` is used to issue and display notifications on the Android device.
 
 ## Notification Permission
 
-For Android 13 (API level 33) and above, notification permission is required:
+For Android 13 (API level 33) and above, notification permission is required.
 
 ```xml
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -114,8 +116,8 @@ After completing this experiment, the following concepts were understood:
 Experiment-05/
 │
 ├── README.md
-├── MainActivity.kt
 ├── AndroidManifest.xml
+├── MainActivity.kt
 ├── activity_main.xml
 ├── screenshot1.png
 ├── screenshot2.png
