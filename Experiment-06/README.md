@@ -69,6 +69,8 @@ Toggle ON/OFF
 Select RadioButton
         ↓
 Display Selected Option
+```
+
 ## Screenshots
 
 ### Screenshot 1 – Application Interface
