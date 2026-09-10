@@ -27,49 +27,61 @@ To develop and demonstrate an Android application named **CampusConnect** that a
 
 ###  1. Home Activity
 
-The Home screen contains:
+The Home screen provides access to the main student services.
 
-- College/application logo
-- Application name – **CampusConnect**
+- CampusConnect application logo
+- Application name
 - Welcome message
-- **Student Profile** button
-- **Course Registration** button
+- Student Profile button
+- Course Registration button
 
 ###  2. Student Profile Fragment
 
-The Profile Fragment displays:
+The Student Profile Fragment displays:
 
 - Student Name
 - USN
 - Email
-- Gender using **RadioButton** and **RadioGroup**
+- Gender selection using RadioButton and RadioGroup
 
 ###  3. Course Registration Fragment
 
-The Course Registration Fragment contains:
+The Course Registration Fragment allows students to:
 
-- Course Name using **EditText**
-- Semester selection using **RadioButton** and **RadioGroup**
-- **Register** button
+- Enter a course name
+- Select a semester
+- Register for the selected course
 
-###  4. Registration Confirmation Activity
+UI components used:
 
-After clicking Register:
+- EditText
+- RadioGroup
+- RadioButton
+- Button
 
-- An **Intent** sends the selected course and semester.
-- A confirmation screen displays the registration result.
-- A **Back to Home** button is provided.
+###  4. Intent-Based Navigation
 
-###  5. Android Notification
+After registration, an **Intent** transfers the selected course name and semester from the Course Registration Fragment to the Confirmation Activity.
 
-After successful registration, the application displays an Android notification:
+###  5. Registration Confirmation Activity
 
-> **Course Registration**  
-> Course registered successfully
+The Confirmation Activity displays:
 
-###  6. Activity Lifecycle
+- Registration Successful message
+- Selected course
+- Selected semester
+- Back to Home button
 
-Lifecycle methods are demonstrated and logged in Logcat:
+###  6. Android Notification
+
+After successful registration, the application generates an Android notification:
+
+**Course Registration**  
+**Course registered successfully**
+
+###  7. Activity Lifecycle
+
+The application demonstrates Android Activity Lifecycle methods:
 
 ```text
 onCreate()
@@ -85,40 +97,36 @@ onStop()
 onDestroy()
 ```
 
+Lifecycle events can be monitored using **Android Logcat**.
+
 ---
 
-##  Project Flow
+##  Application Flow
 
 ```text
-                  ┌────────────────────┐
-                  │    HOME ACTIVITY   │
-                  └─────────┬──────────┘
-                            │
-              ┌─────────────┴─────────────┐
-              ↓                           ↓
-    ┌──────────────────┐       ┌────────────────────────┐
-    │ Profile Fragment │       │ Course Registration    │
-    │                  │       │ Fragment               │
-    └──────────────────┘       └───────────┬────────────┘
-                                           │
-                                  Enter Course Name
-                                           +
-                                  Select Semester
-                                           │
-                                           ↓
-                                      REGISTER
-                                           │
-                                           ↓
-                              ┌────────────────────────┐
-                              │ Confirmation Activity  │
-                              └───────────┬────────────┘
-                                          │
-                              ┌───────────┴───────────┐
-                              ↓                       ↓
-                    Registration Result       Android Notification
-                              │
-                              ↓
-                       Back to Home
+                    HOME ACTIVITY
+                         │
+              ┌──────────┴──────────┐
+              ↓                     ↓
+      STUDENT PROFILE       COURSE REGISTRATION
+         FRAGMENT                  FRAGMENT
+                                    │
+                              Enter Course
+                                    +
+                             Select Semester
+                                    │
+                                    ↓
+                                REGISTER
+                                    │
+                                    ↓
+                         CONFIRMATION ACTIVITY
+                                    │
+                       ┌────────────┴────────────┐
+                       ↓                         ↓
+              Registration Result        Android Notification
+                       │
+                       ↓
+                  Back to Home
 ```
 
 ---
@@ -152,35 +160,54 @@ CampusConnect/
 
 #  Application Screenshots
 
-The screenshots are stored inside the `screenshots` folder so that GitHub displays them directly in this README.
+The following screenshots demonstrate the working flow of the CampusConnect Android application.
 
 ## 1.  Home Screen
 
-![CampusConnect Home Screen](./screenshots/home.png)
+The Home Activity provides navigation to Student Profile and Course Registration.
+
+![CampusConnect Home Screen](./home.png)
 
 ---
 
-## 2.  Course Registration
+## 2.  Student Profile
 
-![Course Registration](./screenshots/course-registration.png)
+The Student Profile Fragment displays the student's name, USN, email, and gender selection.
 
----
-
-## 3.  Registration Confirmation
-
-![Registration Confirmation](./screenshots/confirmation.png)
+![Student Profile](./profile.png)
 
 ---
 
-## 4.  Registration Notification
+## 3.  Course Registration
 
-![Registration Notification](./screenshots/notification.png)
+The Course Registration Fragment allows the student to enter a course name and select a semester.
+
+![Course Registration](./course-registration.png)
 
 ---
 
-##  Test Case
+## 4.  Registration Successful
 
-### Input
+After clicking the Register button, the Confirmation Activity displays the successful registration details.
+
+**Course:** MCA  
+**Semester:** Semester 1
+
+![Registration Successful](./confirmation.png)
+
+---
+
+## 5.  Registration Notification
+
+After successful registration, the application generates an Android notification confirming the course registration.
+
+![Registration Notification](./notification.png)
+
+---
+
+#  Test Case
+
+### Test Input
 
 ```text
 Course Name : MCA
@@ -196,7 +223,7 @@ Course: MCA
 Semester: Semester 1
 ```
 
-The application also generates a notification confirming successful course registration.
+The application also generates a notification confirming that the course was registered successfully.
 
 ---
 
@@ -204,28 +231,44 @@ The application also generates a notification confirming successful course regis
 
 1. Open the project in **Android Studio**.
 2. Wait for Gradle synchronization to complete.
-3. Connect an Android device or start an Emulator.
+3. Connect an Android device or start an Android Emulator.
 4. Select the device.
 5. Click **Run ▶**.
-6. Open **Student Profile** to view profile information.
+6. Open **Student Profile** to view student details.
 7. Open **Course Registration**.
 8. Enter the course name.
 9. Select a semester.
 10. Click **Register**.
-11. Verify the confirmation screen and notification.
-12. Check lifecycle events in **Logcat**.
+11. Verify the registration confirmation.
+12. Check the Android notification.
+13. Check lifecycle events using **Logcat**.
 
 ---
 
 ##  Result
 
-The **CampusConnect – Student Service** Android application was successfully developed and tested. The project demonstrates **Activities, Fragments, Intents, UI Views, RadioButtons, RadioGroup, EditText, Buttons, Notifications, and Activity Lifecycle methods**.
+The **CampusConnect – Student Service** Android application was successfully developed and tested.
+
+The application demonstrates:
+
+- Activity
+- Fragment
+- Intent
+- EditText
+- Button
+- RadioButton
+- RadioGroup
+- Activity Lifecycle
+- Android Notification
+- Logcat
 
 ---
 
 ##  Conclusion
 
-The project provides practical understanding of Android application development by integrating multiple Android components into one scenario-based application. It successfully implements student profile viewing, course registration, Intent-based navigation, registration confirmation, lifecycle logging, and notification generation.
+The project provides practical understanding of Android application development by integrating multiple Android components into a single scenario-based application.
+
+It successfully implements student profile viewing, course registration, Intent-based navigation, registration confirmation, Activity Lifecycle logging, and Android notification generation.
 
 ---
 
@@ -239,4 +282,22 @@ The project provides practical understanding of Android application development 
 | Language | Kotlin |
 | UI | XML |
 | IDE | Android Studio |
-| Application Type | Student Service App |
+| Application Type | Student Service Application |
+
+---
+
+##  Screenshot Files
+
+Keep the README and the five screenshot files in the **same Test-01 folder**:
+
+```text
+Test-01/
+├── README.md
+├── home.png
+├── profile.png
+├── course-registration.png
+├── confirmation.png
+└── notification.png
+```
+
+> **Important:** The screenshot names must match the names used above so that GitHub displays all five images directly inside the README.
