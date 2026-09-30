@@ -95,7 +95,7 @@ The application provides navigation between:
 
 The Image Grid displays media resources in a two-column layout.
 
-![Image Grid](screenshots/image_grid.png)
+![Image Grid](./image_grid.png)
 
 ---
 
@@ -104,7 +104,7 @@ The Image Grid displays media resources in a two-column layout.
 The application can open the device's photo selection interface for
 selecting media.
 
-![Photo Picker](screenshots/photo_picker.png)
+![Photo Picker](./photo_picker.png)
 
 ---
 
@@ -112,7 +112,7 @@ selecting media.
 
 The WebView displays the local web content inside the Android application.
 
-![WebView](screenshots/webview.png)
+![WebView](./webview.png)
 
 ---
 
