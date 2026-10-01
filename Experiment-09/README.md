@@ -133,6 +133,55 @@ The SQLite database maintains every successful login as a separate record.
 | Password | Password entered during login |
 | Saved At | Date and time when the record was saved |
 
+---
+
+# 📸 Screenshots
+
+## 🔐 Login Screen
+
+The login screen allows the user to enter username and password. 
+Previously saved credentials are automatically restored using SharedPreferences.
+
+<p align="center">
+  <img src="./login_screen.png" alt="Login Screen" width="300">
+</p>
+
+---
+
+## ✅ Login Successful
+
+After successful login, the entered credentials are stored as a new record 
+in the SQLite database.
+
+<p align="center">
+  <img src="./login_success.png" alt="Login Successful" width="300">
+</p>
+
+---
+
+## 🗄️ SQLite Database Dashboard
+
+The dashboard displays all login records stored permanently in the SQLite 
+database. Each successful login is stored as a separate record.
+
+<p align="center">
+  <img src="./dashboard_sqlite.png" alt="SQLite Database Dashboard" width="300">
+</p>
+
+---
+
+# 🏁 Conclusion
+
+This experiment demonstrates data persistence in Android using two different
+storage mechanisms:
+
+- **SharedPreferences** for key-value data and automatic credential restoration.
+- **SQLite Database** for storing and managing multiple login records.
+
+The application successfully preserves login credentials, provides automatic
+credential filling, stores every successful login permanently, and provides
+a logout option from the dashboard.
+
 ### Example Record
 
 ```text
