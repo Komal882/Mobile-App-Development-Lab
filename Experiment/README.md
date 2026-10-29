@@ -1,41 +1,42 @@
-MAD Experiment 12: Access Web Services Using HTTP Request
+# 🌐 MAD Experiment 12: Access Web Services Using HTTP Request
 
-A Mobile Application Development lab experiment demonstrating asynchronous web service consumption using HTTP/HTTPS requests, Kotlin Coroutines, "Dispatchers.IO", and JSON parsing in Android.
+An Android application demonstrating asynchronous web service consumption using HTTP GET requests, Kotlin Coroutines, and JSON parsing.
 
----
+## 🎯 Aim
 
-1. Aim
+To develop an Android application that sends an HTTP GET request to a RESTful web service, retrieves JSON data, parses the response, and displays the user's name, email address, and city using Kotlin Coroutines.
 
-To develop an Android application that sends an HTTP GET request to a RESTful web service, retrieves JSON data, parses the response, and displays the user details on the screen using Kotlin Coroutines.
+## 🛠️ Technologies Used
 
-2. Concept & Technology Overview
+- 💻 **Language:** Kotlin
+- 📱 **IDE:** Android Studio
+- 🌐 **Networking:** Java URL API
+- ⚡ **Asynchronous Processing:** Kotlin Coroutines
+- 🔄 **Thread Management:** Dispatchers.IO and Dispatchers.Main
+- 📦 **Data Format:** JSON
+- 🔗 **API:** JSONPlaceholder
+- 🎨 **UI:** Android XML Layouts
 
-- RESTful Web Services: Allow applications to exchange data using HTTP methods such as GET.
-- HTTP GET Request: Retrieves information from a remote server.
-- Kotlin Coroutines: Perform network operations asynchronously without blocking the main UI thread.
-- Dispatchers.IO: Executes network operations on a background thread.
-- Dispatchers.Main: Updates the user interface on the main thread.
-- JSON Parsing: Uses "JSONObject" to extract information from the JSON response.
-- Error Handling: Displays an error message if the network request fails.
+## ✨ Features
 
-Scenario
+- 🌐 Fetches user details from a RESTful web service using an HTTP GET request.
+- ⚡ Performs network operations asynchronously using Kotlin Coroutines.
+- 📄 Parses JSON responses using `JSONObject`.
+- 👤 Displays the user's name, email address, and city.
+- ⚠️ Handles network errors without crashing the application.
+- 📱 Provides a simple Android user interface.
 
-The application fetches user details from a remote REST API and displays the user's name, email address, and city.
+## 🔗 API Endpoint
 
-API endpoint: "JSONPlaceholder – User 1" (https://jsonplaceholder.typicode.com/users/1)
+The application uses the following public REST API:
 
-3. Technologies Used
+https://jsonplaceholder.typicode.com/users/1
 
-- Language: Kotlin
-- IDE: Android Studio
-- Networking: Java URL API
-- Asynchronous Processing: Kotlin Coroutines
-- Data Format: JSON
-- API: JSONPlaceholder
-- UI: Android XML Layouts
+The API returns user information in JSON format, including the name, email, and address.
 
-4. Project File & Folder Structure
+## 📂 Project Structure
 
+```text
 WebServiceHttpApp/
 ├── app/
 │   ├── src/
@@ -50,110 +51,64 @@ WebServiceHttpApp/
 ├── build.gradle.kts
 ├── settings.gradle.kts
 └── README.md
+```
 
-File Descriptions
+## ⚙️ Implementation Details
 
-- "AndroidManifest.xml" — Declares internet access permission.
-- "MainActivity.kt" — Executes the HTTP request, parses JSON, and displays the result.
-- "activity_main.xml" — Defines the fetch button and result display area.
-- "build.gradle.kts" — Configures the required dependencies.
+### 1. 🌐 Internet Permission
 
-5. Main Source Code
+Internet access is enabled by adding the following permission to `AndroidManifest.xml`:
 
-5.1 "AndroidManifest.xml"
-
-Add the internet permission above the "<application>" element.
-
+```xml
 <uses-permission android:name="android.permission.INTERNET" />
+```
 
-5.2 "MainActivity.kt"
+### 2. ⚡ Kotlin Coroutines
 
-package com.example.webservicehttpapp
+Kotlin Coroutines perform network operations in the background using `Dispatchers.IO`, while `Dispatchers.Main` updates the user interface safely.
 
-import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import java.net.URL
+### 3. 📄 JSON Parsing
 
-class MainActivity : AppCompatActivity() {
+The application uses `JSONObject` to extract the following information from the API response:
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+- **Name:** User's full name
+- **Email:** User's email address
+- **City:** User's city from the address object
 
-        val btnFetch = findViewById<Button>(R.id.btnFetch)
-        val tvResult = findViewById<TextView>(R.id.tvResult)
+### 4. 📦 Required Dependency
 
-        btnFetch.setOnClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                try {
-                    val rawJson = URL(
-                        "https://jsonplaceholder.typicode.com/users/1"
-                    ).readText()
+The following dependency is added to the app-level `build.gradle.kts` file:
 
-                    val json = JSONObject(rawJson)
-                    val address = json.getJSONObject("address")
-
-                    val result = """
-                        Name: ${json.getString("name")}
-                        Email: ${json.getString("email")}
-                        City: ${address.getString("city")}
-                    """.trimIndent()
-
-                    withContext(Dispatchers.Main) {
-                        tvResult.text = result
-                    }
-                } catch (e: Exception) {
-                    withContext(Dispatchers.Main) {
-                        tvResult.text = "Error: ${e.message}"
-                    }
-                }
-            }
-        }
-    }
-}
-
-5.3 Required Dependency
-
-Add the following dependency to the app-level "build.gradle.kts" if it is not already included:
-
+```kotlin
 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+```
 
-6. Test Cases & Execution Verification
+## 🧪 Test Cases
 
-Test Case 1: Initial Application Screen
+| Test Case | Action | Expected Output |
+|---|---|---|
+| Initial Screen | Launch the application | Fetch button and result area are displayed |
+| Successful Request | Tap the Fetch Web Data button with internet access | Name, email, and city are displayed |
+| Network Error | Disable internet and tap the button | An error message is displayed without crashing |
 
-- Action: Launch the application on an Android emulator or physical device.
-- Expected Output: The application displays the fetch button and the initial result area.
+## 📸 Screenshots
 
-Test Case 2: HTTP GET Request and JSON Parsing
+### 🏠 Initial Application Interface
 
-- Action: Tap Fetch Web Data while internet connectivity is available.
-- Expected Output: The application fetches the JSON response and displays the user's name, email, and city.
+<img width="526" height="1134" alt="InitialApplicationInterface" src="https://github.com/user-attachments/assets/dfa9e5ab-1ffa-4e7d-9250-38a3508aabeb" />
 
-Test Case 3: Network Error Handling
 
-- Action: Disable Wi-Fi/mobile data and tap Fetch Web Data.
-- Expected Output: The application displays an error message instead of crashing. The exact message depends on the network error.
+### 📊 Web Service Response
 
-7. Screenshots
+<img width="593" height="1021" alt="google-maps-location" src="https://github.com/user-attachments/assets/5626fad2-8d0c-43ba-8f60-41b3ff26a178" />
 
-Screenshot 1: Initial Application Interface
 
-"MAD Experiment 12 - Initial Application Interface" 
-<img width="526" height="1134" alt="InitialApplicationInterface" src="https://github.com/user-attachments/assets/b088f2c4-c20a-42ca-b28a-7757eec67417" />
 
-Screenshot 2: Web Service Response
+## ✅ Result
 
-"MAD Experiment 12 - Fetched Web Service Data" 
-<img width="529" height="1120" alt="WebServiceResponse" src="https://github.com/user-attachments/assets/ac139151-5467-4fe6-8fd6-bac360173441" />
+The Android application successfully demonstrates asynchronous HTTP GET requests to a RESTful web service using Kotlin Coroutines. The JSON response is parsed using `JSONObject`, and the retrieved user details are displayed on the screen. Network errors are handled appropriately without blocking the main UI thread.
 
-8. Result
+## 👩‍💻 Author
 
-The Android application was developed using Kotlin Coroutines to perform an asynchronous HTTP GET request to a RESTful web service. The JSON response was parsed using "JSONObject", and the retrieved information was displayed on the user interface. Network errors were handled without blocking the main UI thread.
+**25MCAR0101 – Komal Gupta**
+
