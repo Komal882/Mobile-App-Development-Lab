@@ -57,4 +57,4 @@ git remote add origin https://github.com/YOUR_USERNAME/EXP11-GoogleMaps-App.git
 git push -u origin main
 ```
 ## images
-![Screenshot 2026-10-26 174128.png](images/Screenshot%202026-10-26%20174128.png)
+<img width="593" height="1021" alt="google-maps-location" src="https://github.com/user-attachments/assets/207b79d0-af40-48a5-bb9c-5af506efcff6" />
