@@ -100,7 +100,7 @@ implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 
 ### 📊 Web Service Response
 
-<img width="593" height="1021" alt="google-maps-location" src="https://github.com/user-attachments/assets/5626fad2-8d0c-43ba-8f60-41b3ff26a178" />
+<img width="529" height="1120" alt="WebServiceResponse" src="https://github.com/user-attachments/assets/5fdf4337-681f-445d-b14b-f9686af6cc5c" />
 
 
 
