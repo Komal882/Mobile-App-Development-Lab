@@ -51,10 +51,10 @@ An Android application that helps travellers organize sightseeing locations, man
 ## 📱 Application Screenshots
 
 ### Google Maps – Planned Route
-![DayPlanner Map View](screenshots/map-view.png)
+![DayPlanner Map View](map-view.png)
 
 ### Sightseeing To-Do List
-![DayPlanner To-Do List](screenshots/todo-list.png)
+![DayPlanner To-Do List](todo-list.png)
 
 ## 🛠️ Technologies Used
 
@@ -180,5 +180,3 @@ Through this project, I gained practical experience in:
 Android Application Development Project
 
 ---
-
-⭐ If you find this project interesting, consider giving the repository a star!
